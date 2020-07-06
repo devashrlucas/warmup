@@ -7,7 +7,7 @@ function App() {
       start: 0,
       end: 0,
     });
-  const [roundedWeights, setRoundedWeights] = useState({});
+  const [roundedWeights, setRoundedWeights] = useState([]);
     useEffect(() => {
       const calculateWeights = () => {
         const weights = [45];
@@ -23,19 +23,24 @@ function App() {
     }
 
     const weights = calculateWeights();
-    console.log(weights);
-    const calculateRoundedWeights = (weights) => {
-      const roundedWeights = [];
-      const temporaryRounded = 0;
+    
+    const calculateRoundedWeights = () => {
+      const rounded = [];
+      let temporaryRounded ;
       let i;
       
       for (i = 0; i < weights.length; i+= 1) {
-        temporaryRounded = Math.ceil(weights[i] / 5) * 5;
-        roundedWeights.push(temporaryRounded);
+        temporaryRounded = Math.ceil((weights[i] / 5)) * 5;
+        rounded.push(temporaryRounded);
       }
-      //setRoundedWeights(Object.assign(roundedWeights));
+      return rounded
     }
+    const rounded = calculateRoundedWeights(); 
+    console.log(rounded)
+    //setRoundedWeights(([...roundedWeights, rounded]: roundedWeights));
   });
+
+
 
   return (
     <div>
