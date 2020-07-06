@@ -8,20 +8,18 @@ function App() {
       end: 0,
     });
   const [roundedWeights, setRoundedWeights] = useState([]);
-    useEffect(() => {
       const calculateWeights = () => {
         const weights = [45];
-        const weightIncrease = (Number((userInput.end - userInput.start)) / 4)
-        let temporaryIncrease = 0; 
+        const weightIncrease = Number(userInput.end - userInput.start) / 4;
+        let temporaryIncrease = 0;
         let i;
 
-      for(i = 0; i < 4; i+= 1) {
-        temporaryIncrease += weightIncrease;
-        weights.push(temporaryIncrease);
-      }
-      return weights;
-    }
-
+        for (i = 0; i < 4; i += 1) {
+          temporaryIncrease += weightIncrease;
+          weights.push(temporaryIncrease);
+        }
+        return weights;
+      };
     const weights = calculateWeights();
     
     const calculateRoundedWeights = () => {
@@ -37,9 +35,10 @@ function App() {
     }
     const rounded = calculateRoundedWeights(); 
     console.log(rounded)
+    
     //setRoundedWeights(([...roundedWeights, rounded]: roundedWeights));
-  });
-
+  
+  
 
 
   return (
