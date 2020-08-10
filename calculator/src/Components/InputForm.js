@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 
 function InputForm(props) {
-    
+
+   const [userInput, setUserInput] = useState({
+     start: 0,
+     end: 0,
+   });
+  
+   
     const handleChange = (e) => {
         const value = e.target.value;
-        props.setUserInput({
-            ...props.userInput, [e.target.name]: value //computed property and object literal notation
+        setUserInput({
+            ...userInput, [e.target.name]: value //computed property and object literal notation
         });
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        props.setSubmittedUserInput(userInput);
+        props.setIsSubmitted(true);
     }
+    
     return (
       <div>
-        <form onSubmit={handleSubmit}>
+        <form id="inputForm" onSubmit={handleSubmit}>
           <label>
             Starting Weight (lbs)
             <input
               type="text"
               name="start"
-              value={props.userInput.start}
+              value={userInput.start}
               onChange={handleChange}
             />
           </label>
@@ -28,7 +37,7 @@ function InputForm(props) {
             <input
               type="text"
               name="end"
-              value={props.userInput.end}
+              value={userInput.end}
               onChange={handleChange}
             />
           </label>
