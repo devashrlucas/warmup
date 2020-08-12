@@ -1,6 +1,5 @@
-import React from 'react';
-import InputForm from '../Components/InputForm';
-
+import React, { useEffect } from 'react';
+import map from 'lodash.map';
 
 function Calculations(props) {
     const calculateWeights = () => {
@@ -110,8 +109,17 @@ function Calculations(props) {
         return platesPerSet;
     };
     const platesPerSet = calculatePlatesPerSet();
-    console.log(platesPerSet);
-    
+
+    //map from Lodash turns object into an array of its keys then maps array to something else
+   
+
+    useEffect(() => {
+        map(platesPerSet, (val, key) => {
+        props.setWarmupWeights(val)
+        });
+    })
+   
+
     return (
         <div> 
         </div>
