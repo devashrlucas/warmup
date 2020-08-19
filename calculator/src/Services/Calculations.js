@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import map from 'lodash.map';
 
 function Calculations(props) {
     const calculateWeights = () => {
@@ -109,16 +108,12 @@ function Calculations(props) {
         return platesPerSet;
     };
     const platesPerSet = calculatePlatesPerSet();
-
-    //map from Lodash turns object into an array of its keys then maps array to something else
-   
-
     useEffect(() => {
-        map(platesPerSet, (val, key) => {
-        props.setWarmupWeights(val)
-        });
-    })
-   
+        if(props.isSubmitted === true){ //Stops setWarmupWeights from updating state in an infinite loop when empty
+        props.setWarmupWeights(Object.entries(platesPerSet));
+        props.setIsSubmitted(false);
+        }
+    });   
 
     return (
         <div> 
