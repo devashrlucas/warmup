@@ -46,8 +46,7 @@ function Calculations(props) {
     const totalWeight = calculateWarmupWeights();
   
     useEffect(() => {
-      if (props.isSubmitted === true) {
-        //Stops setwarmupPlates from updating state in an infinite loop when empty
+      if (props.isSubmitted === true) {  //Stops setwarmupWeights from updating state in an infinite loop when empty
         props.setWarmupWeights(Object.values(totalWeight));
         props.setIsSubmitted(false);
       }
@@ -129,6 +128,7 @@ function Calculations(props) {
         return platesPerSet;
     };
     const platesPerSet = calculatePlatesPerSet();
+    platesPerSet[0]=0
     useEffect(() => {
         if(props.isSubmitted === true){ //Stops setwarmupPlates from updating state in an infinite loop when empty
         props.setwarmupPlates(Object.values(platesPerSet));

@@ -1,14 +1,25 @@
 import React from 'react';
 
 const List = (props) => {
-  //const valuesToRemove = ["0", "1", "2", "3", "4"]
- 
   
+const replaceKeys = () => {
+  const replaced = [];
+  let temp = {};
+  let i;
+  for (i = 0; i < props.warmupWeights.length; i += 1) {
+    temp = {[props.warmupWeights[i]] : [props.warmupPlates[i]]}
+    replaced.push(temp);
+  }
+  return replaced
+}
+
+const completeSet = replaceKeys();
+
   return (
     <div>
       <ul>
         <ul>
-          {props.warmupPlates.map((val, key) => (
+          {completeSet.map((val, key) => (
             <li key={key.toString()} val={val}>
               {val}
             </li>

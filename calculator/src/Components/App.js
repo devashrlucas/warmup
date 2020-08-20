@@ -19,7 +19,10 @@ function App() {
         setIsSubmitted={setIsSubmitted}
         setSubmittedUserInput={setSubmittedUserInput}
       />
-      <List warmupPlates={warmupPlates} />
+      <List 
+      warmupPlates={warmupPlates}
+      warmupWeights={warmupWeights} 
+      />
       <Calculations
         submittedUserInput={submittedUserInput}
         isSubmitted={isSubmitted}
