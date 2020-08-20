@@ -1,9 +1,9 @@
 import React from 'react';
 
 const List = (props) => {
-  props.warmupWeights.map((val, key) =>(
-    console.log(val)
-  ))
+  const valuesToRemove = ["0", "1", "2", "3", "4"]
+ 
+  
   return (
     <div>
       <ul>
