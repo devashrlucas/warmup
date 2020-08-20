@@ -31,6 +31,27 @@ function Calculations(props) {
         return rounded;
     };
     const rounded = calculateRoundedWeights();
+    
+    const calculateWarmupWeights = () => {
+        const total = [];
+        let temp;
+        let i;
+        for(i = 0; i < weights.length; i += 1){
+         temp = (Number(rounded[i]) + Number(props.submittedUserInput.start));
+         total.push(temp)
+        }
+    return total;
+    }
+
+    const totalWeight = calculateWarmupWeights();
+  
+    useEffect(() => {
+      if (props.isSubmitted === true) {
+        //Stops setwarmupPlates from updating state in an infinite loop when empty
+        props.setWarmupWeights(Object.values(totalWeight));
+        props.setIsSubmitted(false);
+      }
+    }); 
 
     const calculateOneSide = () => {
         const oneSide = [];
@@ -109,8 +130,8 @@ function Calculations(props) {
     };
     const platesPerSet = calculatePlatesPerSet();
     useEffect(() => {
-        if(props.isSubmitted === true){ //Stops setWarmupWeights from updating state in an infinite loop when empty
-        props.setWarmupWeights(Object.values(platesPerSet));
+        if(props.isSubmitted === true){ //Stops setwarmupPlates from updating state in an infinite loop when empty
+        props.setwarmupPlates(Object.values(platesPerSet));
         props.setIsSubmitted(false);
         }
     });   

@@ -11,6 +11,7 @@ function App() {
     end: 0,
   });
   const [warmupWeights, setWarmupWeights] = useState([]);
+  const [warmupPlates, setWarmupPlates] = useState([]);
   
   return (
     <div>
@@ -18,13 +19,14 @@ function App() {
         setIsSubmitted={setIsSubmitted}
         setSubmittedUserInput={setSubmittedUserInput}
       />
-      <List warmupWeights={warmupWeights}/>
+      <List warmupPlates={warmupPlates} />
       <Calculations
         submittedUserInput={submittedUserInput}
         isSubmitted={isSubmitted}
         setIsSubmitted={setIsSubmitted}
         setWarmupWeights={setWarmupWeights}
-        warmupWeights={warmupWeights}
+        setwarmupPlates={setWarmupPlates}
+        warmupPlates={warmupPlates}
       />
     </div>
   );
