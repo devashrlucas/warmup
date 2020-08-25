@@ -37,11 +37,13 @@ function Calculations(props) {
         let temp;
         let i;
         for(i = 0; i < weights.length; i += 1){
-         temp = (Number(rounded[i]) + Number(props.submittedUserInput.start));
+         temp = Math.ceil((Number(rounded[i]) + Number(props.submittedUserInput.start))/5)*5;
          total.push(temp)
         }
+        console.log(total)
     return total;
     }
+
 
     const totalWeight = calculateWarmupWeights();
   

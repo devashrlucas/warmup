@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InputForm from './InputForm'
 import Calculations from '../Services/Calculations';
-import List from './List';
+import Table from './Table';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         setIsSubmitted={setIsSubmitted}
         setSubmittedUserInput={setSubmittedUserInput}
       />
-      <List 
+      <Table
       warmupPlates={warmupPlates}
       warmupWeights={warmupWeights} 
       />
