@@ -13,19 +13,29 @@ const replaceKeys = () => {
   return replaced
 }
 
-const completeSet = replaceKeys();
+let completeSet = replaceKeys();
+
+//const display = Object.keys(completeSet).map(key => <li value={key}> {completeSet[key]}</li>)
+console.log(typeof props.warmupPlates)
 
   return (
     <div>
-      <ul>
-        <ul>
-          {completeSet.map((val, key) => (
-            <li key={key.toString()} val={val}>
-              {val}
-            </li>
-          ))}
-        </ul>
-      </ul>
+      <div className="container">
+        <div className="row">
+          <table>
+            {props.warmupWeights.map((val, key) => (
+              <tr id="weights" key={val}>
+                {val}
+              </tr>
+            ))}
+            {props.warmupPlates.map((val, key) => (
+              <tr id="plates" key={val}>
+                {val}
+              </tr>
+            ))}
+          </table>
+        </div>
+      </div>
     </div>
   );
 
