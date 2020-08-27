@@ -40,7 +40,6 @@ function Calculations(props) {
          temp = Math.ceil((Number(rounded[i]) + Number(props.submittedUserInput.start))/5)*5;
          total.push(temp)
         }
-        console.log(total)
     return total;
     }
 
