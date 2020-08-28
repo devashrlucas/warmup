@@ -15,9 +15,6 @@ const replaceKeys = () => {
 }
 
 let completeSet = replaceKeys();
-console.log(Object.keys(props.warmupWeights))
-console.log(Object.keys(props.warmupPlates))
-
 
 //const display = Object.keys(completeSet).map(key => <li value={key}> {completeSet[key]}</li>)
 
@@ -25,10 +22,10 @@ console.log(Object.keys(props.warmupPlates))
     <div>
       <div className="container">
         <table id="floatleft">
-          <tr>
-            <th>Total Weight</th>
-          </tr>
           <tbody>
+            <tr>
+              <th>Total Weight</th>
+            </tr>
             {props.warmupWeights.map((val, key) => (
               <tr className="column" id="weights" key={key}>
                 <td>{val}</td>
@@ -37,10 +34,10 @@ console.log(Object.keys(props.warmupPlates))
           </tbody>
         </table>
         <table>
-          <tr>
-            <th>Plates</th>
-          </tr>
           <tbody>
+            <tr>
+              <th>Plates</th>
+            </tr>
             {props.warmupPlates.map((vul, key) => (
               <tr className="column" id="plates" key={key}>
                 <td>{vul}</td>

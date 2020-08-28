@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 
 function Calculations(props) {
     const calculateWeights = () => {
-        const weights = [0];
+        const weights = [Number(props.submittedUserInput.start)];
         const weightIncrease =
           Number(
             props.submittedUserInput.end - props.submittedUserInput.start
           ) / 4;
         let temporaryIncrease = 0;
         let i;
-
+        
         for (i = 0; i < 4; i += 1) {
         temporaryIncrease += weightIncrease;
         weights.push(temporaryIncrease);
@@ -58,12 +58,12 @@ function Calculations(props) {
         let temporaryOneSide;
         let i;
 
-        for (i = 0; i < rounded.length; i += 1) {
-            if (rounded[i] === 45) {
+        for (i = 0; i < totalWeight.length; i += 1) {
+            if (totalWeight[i] === 45) {
                 temporaryOneSide = 0;
                 oneSide.push(temporaryOneSide);
             } else {
-                temporaryOneSide = (rounded[i] - 45) / 2;
+                temporaryOneSide = ((totalWeight[i] - 45) / 2);
                 oneSide.push(temporaryOneSide);
             }
         }
@@ -71,6 +71,8 @@ function Calculations(props) {
     };
 
     const oneSide = calculateOneSide();
+    console.log(oneSide)
+    
 
     const calculatePlateRemainder = (weight, plate) => {
         const newRemainder = weight / plate;
@@ -83,6 +85,7 @@ function Calculations(props) {
         let filteredArray = [];
         let formattedArray = [];
         let i;
+        x = (x/2)
         const remainder45 = calculatePlateRemainder(x, 45.0);
         const remainder25 = calculatePlateRemainder(remainder45[1], 25.0);
         const remainder10 = calculatePlateRemainder(remainder25[1], 10.0);
@@ -116,6 +119,7 @@ function Calculations(props) {
         // eslint-disable-next-line func-names
         filteredArray = temporaryArray.filter((f) => f !== "");
         formattedArray = filteredArray.join(", ");
+
         return formattedArray;
     };
 
@@ -129,7 +133,7 @@ function Calculations(props) {
         return platesPerSet;
     };
     const platesPerSet = calculatePlatesPerSet();
-    platesPerSet[0]=0
+    console.log(platesPerSet)
     useEffect(() => {
         if(props.isSubmitted === true){ //Stops setwarmupPlates from updating state in an infinite loop when empty
         props.setwarmupPlates(Object.values(platesPerSet));
