@@ -12,6 +12,8 @@ function App() {
   });
   const [warmupWeights, setWarmupWeights] = useState([]);
   const [warmupPlates, setWarmupPlates] = useState([]);
+
+  
   
   return (
     <div>
@@ -20,6 +22,7 @@ function App() {
         setSubmittedUserInput={setSubmittedUserInput}
       />
       <Table
+      setWarmupPlates={setWarmupPlates}
       warmupPlates={warmupPlates}
       warmupWeights={warmupWeights} 
       />

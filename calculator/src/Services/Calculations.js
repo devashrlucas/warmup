@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 function Calculations(props) {
     const calculateWeights = () => {
-        const weights = [Number(props.submittedUserInput.start)];
+        const weights = [];
         const weightIncrease =
           Number(
             props.submittedUserInput.end - props.submittedUserInput.start
@@ -14,10 +14,12 @@ function Calculations(props) {
         temporaryIncrease += weightIncrease;
         weights.push(temporaryIncrease);
         }
+        weights.unshift(Number(props.submittedUserInput.start));
         return weights;
     };
 
     const weights = calculateWeights();
+    
 
     const calculateRoundedWeights = () => {
         const rounded = [];
@@ -40,11 +42,13 @@ function Calculations(props) {
          temp = Math.ceil((Number(rounded[i]) + Number(props.submittedUserInput.start))/5)*5;
          total.push(temp)
         }
+        total[0] = rounded[0];
     return total;
     }
 
 
     const totalWeight = calculateWarmupWeights();
+    
   
     useEffect(() => {
       if (props.isSubmitted === true) {  //Stops setwarmupWeights from updating state in an infinite loop when empty
@@ -70,9 +74,7 @@ function Calculations(props) {
         return oneSide;
     };
 
-    const oneSide = calculateOneSide();
-    console.log(oneSide)
-    
+    const oneSide = calculateOneSide();  
 
     const calculatePlateRemainder = (weight, plate) => {
         const newRemainder = weight / plate;
@@ -85,7 +87,7 @@ function Calculations(props) {
         let filteredArray = [];
         let formattedArray = [];
         let i;
-        x = (x/2)
+        
         const remainder45 = calculatePlateRemainder(x, 45.0);
         const remainder25 = calculatePlateRemainder(remainder45[1], 25.0);
         const remainder10 = calculatePlateRemainder(remainder25[1], 10.0);
@@ -94,27 +96,28 @@ function Calculations(props) {
         for (i = 0; i < remainder45[0]; i += 1) {
         if (remainder45[0] !== 0) {
             temporaryArray.push(45);
-        }
+            }
         }
         for (i = 0; i < remainder25[0]; i += 1) {
         if (remainder25[0] !== 0) {
             temporaryArray.push(25);
-        }
+        
+            }
         }
         for (i = 0; i < remainder10[0]; i += 1) {
         if (remainder10[0] !== 0) {
             temporaryArray.push(10);
-        }
+            }
         }
         for (i = 0; i < remainder5[0]; i += 1) {
         if (remainder5[0] !== 0) {
             temporaryArray.push(5);
-        }
+            }
         }
         for (i = 0; i < remainder2p5[0]; i += 1) {
         if (remainder2p5[0] !== 0) {
             temporaryArray.push(2.5);
-        }
+            }
         }
         // eslint-disable-next-line func-names
         filteredArray = temporaryArray.filter((f) => f !== "");
@@ -122,22 +125,22 @@ function Calculations(props) {
 
         return formattedArray;
     };
-
+    
     const calculatePlatesPerSet = () => {
         const platesPerSet = [];
         let i;
-
+        rounded[0] = props.submittedUserInput.start-45; //Fixes issues with inserting the weight number for the first set
         for (i = 0; i < rounded.length; i += 1) {
         platesPerSet.push(calculateEachSet(rounded[i]));
         }
         return platesPerSet;
     };
     const platesPerSet = calculatePlatesPerSet();
-    console.log(platesPerSet)
+
     useEffect(() => {
         if(props.isSubmitted === true){ //Stops setwarmupPlates from updating state in an infinite loop when empty
-        props.setwarmupPlates(Object.values(platesPerSet));
-        props.setIsSubmitted(false);
+            props.setwarmupPlates(Object.values(platesPerSet));
+            props.setIsSubmitted(false);
         }
     });   
 

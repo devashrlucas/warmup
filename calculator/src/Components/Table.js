@@ -1,22 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../Styles/Table.css';
 
 const Table = (props) => {
-  
-const replaceKeys = () => {
-  const replaced = [];
-  let temp = {};
-  let i;
-  for (i = 0; i < props.warmupWeights.length; i += 1) {
-    temp = {[props.warmupWeights[i]] : [props.warmupPlates[i]]}
-    replaced.push(temp);
+
+useEffect(() => {
+  if (props.warmupWeights[0] === 45) {
+    document.getElementById("plates").cells[0].innerHTML = "Empty bar";
   }
-  return replaced
-}
-
-let completeSet = replaceKeys();
-
-//const display = Object.keys(completeSet).map(key => <li value={key}> {completeSet[key]}</li>)
+})
 
   return (
     <div>
@@ -42,7 +33,7 @@ let completeSet = replaceKeys();
               <tr className="column" id="plates" key={key}>
                 <td>{vul}</td>
               </tr>
-            ))}{" "}
+            ))}
           </tbody>
         </table>
       </div>
