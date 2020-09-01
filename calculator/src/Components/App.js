@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import InputForm from './InputForm'
-import Calculations from '../Services/Calculations';
-import Table from './Table';
-
+import React, { useState, useEffect } from "react";
+import InputForm from "./InputForm";
+import Calculations from "../Services/Calculations";
+import Table from "./Table";
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -13,8 +12,6 @@ function App() {
   const [warmupWeights, setWarmupWeights] = useState([]);
   const [warmupPlates, setWarmupPlates] = useState([]);
 
-  
-  
   return (
     <div>
       <InputForm
@@ -22,9 +19,9 @@ function App() {
         setSubmittedUserInput={setSubmittedUserInput}
       />
       <Table
-      setWarmupPlates={setWarmupPlates}
-      warmupPlates={warmupPlates}
-      warmupWeights={warmupWeights} 
+        setWarmupPlates={setWarmupPlates}
+        warmupPlates={warmupPlates}
+        warmupWeights={warmupWeights}
       />
       <Calculations
         submittedUserInput={submittedUserInput}
@@ -36,7 +33,6 @@ function App() {
       />
     </div>
   );
-  
 }
 
 export default App;
