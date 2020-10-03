@@ -5,6 +5,7 @@ function Calculations(props) {
     const weights = [];
     const weightIncrease =
       Number(props.submittedUserInput.end - props.submittedUserInput.start) / 4;
+    const insertWeight = Number(props.submittedUserInput.start); 
     let temporaryIncrease = 0;
     let i;
 
@@ -12,7 +13,7 @@ function Calculations(props) {
       temporaryIncrease += weightIncrease;
       weights.push(temporaryIncrease);
     }
-    weights.unshift(Number(props.submittedUserInput.start));
+    weights.unshift(insertWeight);
     return weights;
   };
 
@@ -24,7 +25,7 @@ function Calculations(props) {
     let i;
 
     for (i = 0; i < weights.length; i += 1) {
-      temporaryRounded = Math.ceil(weights[i] / 5) * 5;
+      temporaryRounded = Math.floor(weights[i] / 5) * 5;
       rounded.push(temporaryRounded);
     }
     return rounded;
@@ -135,8 +136,7 @@ function Calculations(props) {
   const platesPerSet = calculatePlatesPerSet();
 
   useEffect(() => {
-    if (props.isSubmitted === true) {
-      //Stops setwarmupPlates from updating state in an infinite loop when empty
+    if (props.isSubmitted === true) { //Stops setwarmupPlates from updating state in an infinite loop when empty
       props.setwarmupPlates(Object.values(platesPerSet));
       props.setIsSubmitted(false);
     }

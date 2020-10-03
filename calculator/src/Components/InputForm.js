@@ -25,7 +25,7 @@ function InputForm(props) {
         <label>
           Starting Weight (lbs)
           <input
-            type="text"
+            type="number"
             name="start"
             value={userInput.start}
             onChange={handleChange}
@@ -34,7 +34,7 @@ function InputForm(props) {
         <label>
           Ending Weight (lbs)
           <input
-            type="text"
+            type="number"
             name="end"
             value={userInput.end}
             onChange={handleChange}

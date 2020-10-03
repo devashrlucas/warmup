@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useMediaQuery } from 'react-responsive'
 import InputForm from "./InputForm";
 import Calculations from "../Services/Calculations";
 import Table from "./Table";
@@ -11,6 +12,12 @@ function App() {
   });
   const [warmupWeights, setWarmupWeights] = useState([]);
   const [warmupPlates, setWarmupPlates] = useState([]);
+
+  const breakpoints = {
+    phone:,
+    desktop:,
+    tablet:,
+  }
 
   return (
     <div>
